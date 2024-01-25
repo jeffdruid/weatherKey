@@ -9,7 +9,7 @@ app = Flask(__name__)
 
 @app.route("/key", methods=["GET"])
 def get_key():
-    apiKey = os.environ.get("API_KEY")
+    api_key = os.environ.get("API_KEY")
 
     lat = request.args.get("lat")
     lon = request.args.get("lon")
