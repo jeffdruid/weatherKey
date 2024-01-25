@@ -7,7 +7,7 @@ if os.path.exists("env.py"):
 
 app = Flask(__name__)
 
-@app.route("/key", methods=["GET"])
+@app.route("/mykey", methods=["GET"])
 def get_key():
     apiKey = os.environ.get("API_KEY")
 
@@ -31,6 +31,8 @@ def get_key():
     
 @app.route("/", methods=["GET"])
 def get_home():
+    sample_url1 = "https://weather-dh-d49c7aef68c1.herokuapp.com/mykey?location=London"
+    sample_url2 = "https://weather-dh-d49c7aef68c1.herokuapp.com/mykey?lat=51.5074&lon=-0.1278"
     return jsonify({"message": "Welcome to the Weather API!"}), 200
 
 if __name__ == "__main__":  
