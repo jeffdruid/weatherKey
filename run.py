@@ -9,18 +9,18 @@ app = Flask(__name__)
 
 @app.route("/key", methods=["GET"])
 def get_key():
-    api_key = os.environ.get("API_KEY")
+    apiKey = os.environ.get("API_KEY")
 
     lat = request.args.get("lat")
     lon = request.args.get("lon")
 
     if lat and lon:
-        url = f"https://api.openweathermap.org/data/2.5/onecall?lat={lat}&lon={lon}&exclude=minutely,hourly&appid={api_key}"
+        url = f"https://api.openweathermap.org/data/2.5/onecall?lat={lat}&lon={lon}&exclude=minutely,hourly&appid={apiKey}"
     else:
         location = request.args.get("location")
         if not location:
             return jsonify({"error": "Missing required parameter: location"}), 400
-        url = f"https://api.openweathermap.org/data/2.5/weather?q={location}&appid={api_key}"
+        url = f"https://api.openweathermap.org/data/2.5/weather?q={location}&appid={apiKey}"
     
     response = requests.get(url)
 
