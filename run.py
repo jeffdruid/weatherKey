@@ -15,12 +15,12 @@ def get_key():
     lon = request.args.get("lon")
 
     if lat and lon:
-        url = f"https://api.openweathermap.org/data/2.5/onecall?lat={lat}&lon={lon}&exclude=minutely,hourly&appid={apiKey}"
+        url = f"https://api.openweathermap.org/data/2.5/weather?units=metric&{lat}&lon={lon}&appid={apiKey}"
     else:
         location = request.args.get("location")
         if not location:
             return jsonify({"error": "Missing required parameter: location"}), 400
-        url = f"https://api.openweathermap.org/data/2.5/weather?q={location}&appid={apiKey}"
+        url = f"https://api.openweathermap.org/data/2.5/weather?units=metric&q={location}&appid={apiKey}"
     
     response = requests.get(url)
 
