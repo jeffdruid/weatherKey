@@ -32,8 +32,8 @@ def get_key():
     
 @app.route("/", methods=["GET"])
 def get_home():
-    sample_url1 = "https://weather-dh-d49c7aef68c1.herokuapp.com/mykey?location=London"
-    sample_url2 = "https://weather-dh-d49c7aef68c1.herokuapp.com/mykey?lat=51.5074&lon=-0.1278"
+    sample_url1 = "https://weather-key-160275f00837.herokuapp.com/mykey?location=London"
+    sample_url2 = "https://weather-key-160275f00837.herokuapp.com/mykey?lat=51.5074&lon=-0.1278"
     print(sample_url1)
     print(sample_url2)
     return jsonify({"message": "Welcome to the Weather API!"}), 200
