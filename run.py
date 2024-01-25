@@ -2,10 +2,13 @@ import os
 import requests
 
 from flask import Flask, request, jsonify
+from flask_cors import CORS  # Import the CORS module
+
 if os.path.exists("env.py"):
     import env
 
 app = Flask(__name__)
+CORS(app)  # Enable CORS for your Flask app
 
 @app.route("/mykey", methods=["GET"])
 def get_key():
