@@ -29,8 +29,8 @@ def get_data():
 
 @app.route('/', methods=['GET'])
 def get_info():
-    sample_url1 = "https://weather-dh-d49c7aef68c1.herokuapp.com/myapi?location=London"
-    sample_url2 = "https://weather-dh-d49c7aef68c1.herokuapp.com/myapi?lat=51.5074&lon=-0.1278"
+    sample_url1 = "https://weather-key-160275f00837.herokuapp.com/myapi?location=London"
+    sample_url2 = "https://weather-key-160275f00837.herokuapp.com/myapi?lat=51.5074&lon=-0.1278"
     return f"Sample URL with location: <strong>{sample_url1}</strong><br><br>Sample URL with latitude and longitude: <strong>{sample_url2}</strong>"
 
 if __name__ == "__main__":
