@@ -18,12 +18,18 @@ def get_data():
         endpoint = request.args.get('endpoint', 'weather')  # Added endpoint parameter with default value 'weather'
         
         if lat and lon:
-            external_api_url = f'https://api.openweathermap.org/data/2.5/{endpoint}?units=metric&lat={lat}&lon={lon}&appid={api_key}'
+            if endpoint == 'forecast':
+                external_api_url = f'https://api.openweathermap.org/data/2.5/{endpoint}?units=metric&lat={lat}&lon={lon}&appid={api_key}&cnt=5'
+            else:
+                external_api_url = f'https://api.openweathermap.org/data/2.5/{endpoint}?units=metric&lat={lat}&lon={lon}&appid={api_key}'
         else:
             location = request.args.get('location')
             if not location:
                 return jsonify({"error": "No location or coordinates provided"}), 400
-            external_api_url = f'https://api.openweathermap.org/data/2.5/{endpoint}?units=metric&q={location}&appid={api_key}'
+            if endpoint == 'forecast':
+                external_api_url = f'https://api.openweathermap.org/data/2.5/{endpoint}?units=metric&q={location}&appid={api_key}&cnt=5'
+            else:
+                external_api_url = f'https://api.openweathermap.org/data/2.5/{endpoint}?units=metric&q={location}&appid={api_key}'
 
         response = requests.get(external_api_url)
         if response.status_code == 200:
