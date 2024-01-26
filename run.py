@@ -9,8 +9,6 @@ CORS(app)  # Enable CORS for all routes
 if os.path.exists("env.py"):
     import env
 
-app = Flask(__name__)
-
 @app.route('/myapi', methods=['GET'])
 def get_data():
     api_key = os.environ.get("API_KEY") 
