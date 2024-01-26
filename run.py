@@ -1,10 +1,11 @@
 import os
 import requests
 from flask import Flask, request, jsonify
-from flask_cors import CORS
+from flask_cors import CORS, cross_origin
 
 app = Flask(__name__)
 CORS(app)  # Enable CORS for all routes
+app.config['CORS_HEADERS'] = 'Content-Type'
 
 if os.path.exists("env.py"):
     import env
@@ -34,6 +35,7 @@ def get_data():
         return jsonify({"error": str(e)}), 500
 
 @app.route('/', methods=['GET'])
+@cross_origin()
 def get_info():
     try:
         sample_url1 = "https://weather-key-160275f00837.herokuapp.com/myapi?location=London"
