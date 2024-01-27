@@ -19,7 +19,7 @@ def get_data():
         
         if lat and lon:
             if endpoint == 'forecast':
-                external_api_url = f'https://api.openweathermap.org/data/2.5/{endpoint}?units=metric&lat={lat}&lon={lon}&appid={api_key}&cnt=5'
+                external_api_url = f'https://api.openweathermap.org/data/2.5/{endpoint}?units=metric&lat={lat}&lon={lon}&appid={api_key}'
             else:
                 external_api_url = f'https://api.openweathermap.org/data/2.5/{endpoint}?units=metric&lat={lat}&lon={lon}&appid={api_key}'
         else:
@@ -27,7 +27,7 @@ def get_data():
             if not location:
                 return jsonify({"error": "No location or coordinates provided"}), 400
             if endpoint == 'forecast':
-                external_api_url = f'https://api.openweathermap.org/data/2.5/{endpoint}?units=metric&q={location}&appid={api_key}&cnt=5'
+                external_api_url = f'https://api.openweathermap.org/data/2.5/{endpoint}?units=metric&q={location}&appid={api_key}'
             else:
                 external_api_url = f'https://api.openweathermap.org/data/2.5/{endpoint}?units=metric&q={location}&appid={api_key}'
 
@@ -38,11 +38,6 @@ def get_data():
             return jsonify({"error": "Failed to fetch data from external API"}), response.status_code
     except Exception as e:
         return jsonify({"error": str(e)}), 500
-
-@app.route('/forecast', methods=['GET'])
-def apiUrlForecast():
-    request.args['endpoint'] = 'forecast'
-    return get_data()
 
 @app.route('/', methods=['GET'])
 def get_info():
