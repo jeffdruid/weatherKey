@@ -39,10 +39,10 @@ def get_data():
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 
-@app.route('/forecast', methods=['GET'])
-def apiUrlForecast():
-    request.args['endpoint'] = 'forecast'
-    return get_data()
+# @app.route('/forecast', methods=['GET'])
+# def apiUrlForecast():
+#     request.args['endpoint'] = 'forecast'
+#     return get_data()
 
 @app.route('/', methods=['GET'])
 def get_info():
