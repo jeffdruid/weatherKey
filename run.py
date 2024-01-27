@@ -49,7 +49,8 @@ def get_info():
     try:
         sample_url1 = "https://weather-key-160275f00837.herokuapp.com/myapi?location=London"
         sample_url2 = "https://weather-key-160275f00837.herokuapp.com/myapi?lat=51.5074&lon=-0.1278"
-        return f"Sample URL with location: <strong>{sample_url1}</strong><br><br>Sample URL with latitude and longitude: <strong>{sample_url2}</strong>"
+        sample_url3 = "https://weather-key-160275f00837.herokuapp.com/myapi?location=London&endpoint=forecast"
+        return f"Sample URL with location: <strong>{sample_url1}</strong><br><br>Sample URL with latitude and longitude: <strong>{sample_url2}</strong> {sample_url3}"
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 
